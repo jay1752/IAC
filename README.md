@@ -285,7 +285,7 @@ terraform apply -var-file=environments/prod/terraform.tfvars
 ## Accessing Resources
 
 ### EC2 Instance
-After applying the Terraform configuration, you can SSH into the EC2 instance:
+After applying the Terraform configuration, you can SSH into the EC2 instance: (Security Group is open for testing this, it can be blocked for production)
 ```bash
 ssh -i dev-key.pem ec2-user@<ec2_public_ip>
 ```
@@ -350,4 +350,4 @@ After applying the configuration, the following outputs will be available:
 - RDS endpoint and secret ARN
 - S3 bucket ID and ARN
 - CloudWatch dashboard URL
-- CloudTrail trail name 
+- CloudTrail trail name

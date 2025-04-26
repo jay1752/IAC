@@ -32,6 +32,7 @@ This repository contains Terraform modules to set up a development environment i
   - S3 bucket access
   - Secrets Manager access
 - Key Pair for SSH access
+- CloudWatch agent role
 
 ### 3. Database Module (`modules/database/`)
 - RDS MySQL:
@@ -43,6 +44,9 @@ This repository contains Terraform modules to set up a development environment i
 - Parameter Group
 - Subnet Group
 - Security Group
+- RDS monitoring role
+- RDS credentials
+- KMS encryption keys
 
 ### 4. Storage Module (`modules/storage/`)
 - S3 Bucket:
@@ -53,6 +57,7 @@ This repository contains Terraform modules to set up a development environment i
 - Bucket Policy:
   - CloudTrail access
   - EC2 instance access
+- S3 server-side encryption
 
 ### 5. Monitoring Module (`modules/monitoring/`)
 - CloudWatch Agent:
@@ -68,18 +73,6 @@ This repository contains Terraform modules to set up a development environment i
   - Disk: used, free, total
   - Swap: used, free, total
 - CloudTrail setup
-
-### 6. Security Module (`modules/security/`)
-- IAM Roles:
-  - EC2 instance role
-  - RDS access role
-- IAM Policies:
-  - Least privilege access
-  - Resource-based policies
-- Secrets Manager:
-  - Database credentials
-  - Encryption enabled
-  - Rotation enabled
 
 ## Environment Configuration
 
@@ -176,7 +169,7 @@ This repository contains Terraform modules to set up a development environment i
      # For prod environment
      export AWS_PROFILE=prod
      ```
-     
+
    - Verify environment profiles:
      ```bash
      aws sts get-caller-identity --profile dev
